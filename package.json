@@ -1,0 +1,40 @@
+{
+  "name": "reason-hooks-lib",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "example": "yarn build && parcel ./example/index.html",
+    "clean": "bsb -clean-world",
+    "test": "yarn build & jest",
+    "webpack": "webpack -w",
+    "webpack:production": "NODE_ENV=production webpack",
+    "server": "webpack-dev-server"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "reason-react": "^0.7.0"
+  },
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.8",
+    "bs-platform": "^5.0.4",
+    "bsb-js": "^1.1.7",
+    "html-webpack-plugin": "^3.2.0",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hooks-testing-library": "^0.5.0",
+    "react-test-renderer": "^16.8.6",
+    "reason-react": "^0.7.0",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "reason-hooks-testing-library": "^0.1.2"
+  }
+}

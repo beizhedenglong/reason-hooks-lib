@@ -1,0 +1,33 @@
+{
+  "name": "reason-hooks-lib",
+  "reason": {
+    "react-jsx": 3
+  },
+  "sources": [{
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "example",
+      "type": "dev"
+    },
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
+  "package-specs": [{
+    "module": "commonjs",
+    "in-source": false
+  }],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "reason-react"
+  ],
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest",
+    "reason-hooks-testing-library"
+  ],
+  "refmt": 3
+}
