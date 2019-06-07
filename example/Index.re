@@ -1,1 +1,4 @@
-ReactDOMRe.renderToElementWithId(<div> <Undo /> <Counter /> </div>, "app");
+ReactDOMRe.renderToElementWithId(
+  <div> <UseDidMountExample /> <Undo /> <Counter /> </div>,
+  "app",
+);
