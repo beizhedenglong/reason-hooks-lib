@@ -5,7 +5,7 @@ open ReasonHooksTestingLibrary.Testing;
 describe("useCounter", () => {
   open State;
   open Result;
-  let container = renderHook(() => useCounter(0));
+  let container = renderHook(() => useCounter(0), ());
   test("counter is 0", () =>
     expect(container->result->current.counter) |> toEqual(0)
   );
@@ -22,7 +22,7 @@ describe("useCounter", () => {
 describe("useUndo", () => {
   open State;
   open Result;
-  let result = renderHook(() => useUndo(0))->result;
+  let result = renderHook(() => useUndo(0), ())->result;
   test("(past, present, future) equals ([], 0, [])", () => {
     let current = result->current;
     expect((current.past, current.present, current.future))
@@ -51,5 +51,43 @@ describe("useUndo", () => {
     let current = result->current;
     expect((current.past, current.present, current.future))
     |> toEqual(([0, 1], 2, []));
+  });
+});
+
+describe("useToggle", () => {
+  open State;
+  open Result;
+  let container = renderHook(() => useToggle(false), ());
+  test("on is false", () =>
+    expect(container->result->current.on) |> toEqual(false)
+  );
+  test("on is true", () => {
+    act(() => container->result->current.toggle());
+    expect(container->result->current.on) |> toEqual(true);
+  });
+});
+
+type store = {
+  name: string,
+  age: int,
+};
+
+describe("createGlobalState", () => {
+  open State;
+  open Result;
+  let {getState, useGlobalStore} =
+    createGlobalStore({name: "victor", age: 21});
+  let container = renderHook(() => useGlobalStore(), ());
+  test("age is 21", () => {
+    let current = container->result->current;
+    expect((getState().age, current.state.age)) |> toEqual((21, 21));
+  });
+  test("age is 22", () => {
+    act(() =>
+      container->result->current.set(prev => {...prev, age: prev.age + 1})
+    );
+
+    expect((getState().age, container->result->current.state.age))
+    |> toEqual((22, 22));
   });
 });

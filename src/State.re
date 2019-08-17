@@ -70,3 +70,44 @@ let useUndo = initial => {
     redo,
   };
 };
+
+type toggleType = {
+  on: bool,
+  reset: unit => unit,
+  toggle: unit => unit,
+  set: (bool => bool) => unit,
+};
+let useToggle = initial => {
+  let (on, set) = React.useState(() => initial);
+  {on, reset: () => set(_ => initial), toggle: () => set(prev => !prev), set};
+};
+
+type globalStateType('a) = {
+  state: 'a,
+  set: ('a => 'a) => unit,
+};
+type globalStoreType('a) = {
+  useGlobalStore: unit => globalStateType('a),
+  getState: unit => 'a,
+};
+
+let createGlobalStore = initial => {
+  let state = ref(initial);
+  let listeners = ref([]);
+  let setState = updater => {
+    state := updater(state^);
+    List.iter(f => f(_ => state^), listeners^);
+  };
+  let useGlobalStore = () => {
+    let (localState, set) = React.useState(() => state^);
+    React.useEffect1(
+      () => {
+        listeners := [set, ...listeners^];
+        Some(() => listeners := List.filter(f => f !== set, listeners^));
+      },
+      [||],
+    );
+    {state: localState, set: setState};
+  };
+  {useGlobalStore, getState: () => state^};
+};

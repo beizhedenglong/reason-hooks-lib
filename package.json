@@ -25,16 +25,15 @@
     "bsb-js": "^1.1.7",
     "html-webpack-plugin": "^3.2.0",
     "parcel-bundler": "^1.12.3",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-hooks-testing-library": "^0.5.0",
-    "react-test-renderer": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.9.0",
     "reason-react": "^0.7.0",
     "webpack": "^4.0.1",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
-    "reason-hooks-testing-library": "^0.1.2"
+    "reason-hooks-testing-library": "^0.2.0"
   }
 }
