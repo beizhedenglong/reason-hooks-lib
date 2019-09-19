@@ -72,12 +72,11 @@ type store = {
   age: int,
 };
 
-describe("createGlobalState", () => {
+describe("createStore", () => {
   open State;
   open Result;
-  let {getState, useGlobalStore} =
-    createGlobalStore({name: "victor", age: 21});
-  let container = renderHook(() => useGlobalStore(), ());
+  let {getState, useStore} = createStore({name: "victor", age: 21});
+  let container = renderHook(() => useStore(), ());
   test("age is 21", () => {
     let current = container->result->current;
     expect((getState().age, current.state.age)) |> toEqual((21, 21));

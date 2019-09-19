@@ -86,19 +86,19 @@ type stateType('a) = {
   state: 'a,
   set: ('a => 'a) => unit,
 };
-type globalStoreType('a) = {
-  useGlobalStore: unit => stateType('a),
+type storeType('a) = {
+  useStore: unit => stateType('a),
   getState: unit => 'a,
 };
 
-let createGlobalStore = initial => {
+let createStore = initial => {
   let state = ref(initial);
   let listeners = ref([]);
   let setState = updater => {
     state := updater(state^);
     List.iter(f => f(_ => state^), listeners^);
   };
-  let useGlobalStore = () => {
+  let useStore = () => {
     let (localState, set) = React.useState(() => state^);
     React.useEffect1(
       () => {
@@ -109,7 +109,7 @@ let createGlobalStore = initial => {
     );
     {state: localState, set: setState};
   };
-  {useGlobalStore, getState: () => state^};
+  {useStore, getState: () => state^};
 };
 
 let useStateCallback = (initial, f) => {
