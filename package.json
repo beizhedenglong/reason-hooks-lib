@@ -6,10 +6,7 @@
     "start": "bsb -make-world -w",
     "example": "yarn build && parcel ./example/index.html",
     "clean": "bsb -clean-world",
-    "test": "yarn build & jest",
-    "webpack": "webpack -w",
-    "webpack:production": "NODE_ENV=production webpack",
-    "server": "webpack-dev-server"
+    "test": "yarn build & jest"
   },
   "keywords": [
     "BuckleScript"
@@ -28,10 +25,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-test-renderer": "^16.9.0",
-    "reason-react": "^0.7.0",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.8"
+    "reason-react": "^0.7.0"
   },
   "dependencies": {
     "reason-hooks-testing-library": "^0.2.0"
