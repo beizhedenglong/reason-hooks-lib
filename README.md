@@ -31,18 +31,18 @@ let make = () => {
 2. add `reason-hooks-lib` to `bs-dependencies` in your `bsconfig.json`
 
 ## Available Hooks
-- [**State**]
-  - [`useUndo`]
-  - [`useCounter`]
-  - [`useToggle`]
-  - [`useStateCallback`]
-  - [`createStore`]
-- [**Lifecycle**]
-  - [`useDidMount`]
-  - [`useWillUnmount`]
-  - [`useDidUpdate`]
-- [**Feedback**]
-  - [`useHover`]
+- **State**
+  - `useUndo`
+  - `useCounter`
+  - `useToggle`
+  - `useStateCallback`
+  - `createStore`
+- **Lifecycle**
+  - `useDidMount`
+  - `useWillUnmount`
+  - `useDidUpdate`
+- **Feedback**
+  - `useHover`
 
 
 ## Testing
