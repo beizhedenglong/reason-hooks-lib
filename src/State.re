@@ -82,12 +82,12 @@ let useToggle = initial => {
   {on, reset: () => set(_ => initial), toggle: () => set(prev => !prev), set};
 };
 
-type globalStateType('a) = {
+type stateType('a) = {
   state: 'a,
   set: ('a => 'a) => unit,
 };
 type globalStoreType('a) = {
-  useGlobalStore: unit => globalStateType('a),
+  useGlobalStore: unit => stateType('a),
   getState: unit => 'a,
 };
 
@@ -110,4 +110,11 @@ let createGlobalStore = initial => {
     {state: localState, set: setState};
   };
   {useGlobalStore, getState: () => state^};
+};
+
+let useStateCallback = (initial, f) => {
+  open Lifecycle;
+  let (state, set) = React.useState(() => initial);
+  useDidUpdate(f, [|state|]);
+  {state, set};
 };

@@ -1,4 +1,10 @@
 ReactDOMRe.renderToElementWithId(
-  <div> <UseDidMountExample /> <Undo /> <Counter /> </div>,
+  <div>
+    <UseStateCallBack />
+    <UseDidMountExample />
+    <UseUndo />
+    <UseCounter />
+    <UseHover />
+  </div>,
   "app",
 );
