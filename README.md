@@ -3,6 +3,7 @@
 ReasonML implementation of [`react-hooks-lib`](https://github.com/beizhedenglong/react-hooks-lib).
 
 ```reason
+open ReasonHooksLib;
 
 [@react.component]
 let make = () => {
