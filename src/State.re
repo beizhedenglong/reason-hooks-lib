@@ -1,14 +1,14 @@
 type counterType = {
-  counter: int,
+  count: int,
   set: (int => int) => unit,
   reset: unit => unit,
   inc: unit => unit,
   dec: unit => unit,
 };
 let useCounter = initial => {
-  let (counter, set) = React.useState(() => initial);
+  let (count, set) = React.useState(() => initial);
   {
-    counter,
+    count,
     set,
     reset: () => set(_ => initial),
     inc: () => set(prev => prev + 1),

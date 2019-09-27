@@ -1,12 +1,12 @@
 [@react.component]
-let make = (~counter) => {
+let make = (~count) => {
   Lifecycle.(
     useDidUpdate(
       () => {
         Js.log("did update");
         None;
       },
-      [|counter|],
+      [|count|],
     )
   );
   React.null;

@@ -7,15 +7,15 @@ describe("useDidMount", () => {
   open State;
   open Result;
   let useDidMountTest = () => {
-    let {counter, inc} = useCounter(0);
+    let {count, inc} = useCounter(0);
     useDidMount(() => {
       inc();
       None;
     });
-    counter;
+    count;
   };
   let container = renderHook(() => useDidMountTest(), ());
-  test("counter is 0", () =>
+  test("count is 0", () =>
     expect(container->result->current) |> toBe(1)
   );
 });

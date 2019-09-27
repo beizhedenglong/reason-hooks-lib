@@ -6,16 +6,16 @@ describe("useCounter", () => {
   open State;
   open Result;
   let container = renderHook(() => useCounter(0), ());
-  test("counter is 0", () =>
-    expect(container->result->current.counter) |> toEqual(0)
+  test("count is 0", () =>
+    expect(container->result->current.count) |> toEqual(0)
   );
-  test("counter is 1", () => {
+  test("count is 1", () => {
     act(() => container->result->current.set(prev => prev + 1));
-    expect(container->result->current.counter) |> toEqual(1);
+    expect(container->result->current.count) |> toEqual(1);
   });
-  test("counter is 2", () => {
+  test("count is 2", () => {
     act(() => container->result->current.set(prev => prev + 1));
-    expect(container->result->current.counter) |> toEqual(2);
+    expect(container->result->current.count) |> toEqual(2);
   });
 });
 
